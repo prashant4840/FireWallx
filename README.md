@@ -81,4 +81,3 @@ Open the dashboard → hit simulate attack → watch numbers / heatmap / timelin
 - `config/` — docker-compose + env examples  
 
 More detail in `docs/setup.md` if you need it.
-# FireWallx
