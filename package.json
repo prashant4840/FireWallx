@@ -1,0 +1,28 @@
+{
+  "name": "firewallx",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "gateway",
+    "backend",
+    "frontend",
+    "apps/app1",
+    "apps/app2"
+  ],
+  "scripts": {
+    "dev": "npm-run-all -p dev:backend dev:gateway dev:frontend dev:app1 dev:app2",
+    "dev:backend": "npm --workspace backend run dev",
+    "dev:gateway": "npm --workspace gateway run dev",
+    "dev:frontend": "npm --workspace frontend run dev",
+    "dev:app1": "npm --workspace app1 run dev",
+    "dev:app2": "npm --workspace app2 run dev",
+    "build": "npm-run-all build:backend build:gateway build:frontend",
+    "build:backend": "npm --workspace backend run build",
+    "build:gateway": "npm --workspace gateway run build",
+    "build:frontend": "npm --workspace frontend run build",
+    "demo:seed": "npm --workspace backend run prisma:generate && npx prisma db push --schema backend/prisma/schema.prisma && npm --workspace backend run demo:seed"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

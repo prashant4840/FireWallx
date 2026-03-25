@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Action {
+  ALLOW
+  BLOCK
+  RATE_LIMIT
+}
+
+model Rule {
+  id            String   @id @default(cuid())
+  name          String
+  application   String
+  environment   String
+  priority      Int
+  enabled       Boolean  @default(true)
+  action        Action
+  ipCidr        String?
+  domainPattern String?
+  port          Int?
+  protocol      String?
+  pathPattern   String?
+  role          String?
+  maxRps        Int?
+  metadata      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([application, environment, priority])
+}
+
+model TrafficLog {
+  id            String   @id @default(cuid())
+  requestId     String
+  application   String
+  environment   String
+  ip            String
+  method        String
+  endpoint      String
+  protocol      String
+  domain        String?
+  port          Int?
+  headers       Json
+  action        Action
+  riskScore     Int
+  userRole      String?
+  statusCode    Int?
+  reason        String?
+  responseMs    Int?
+  createdAt     DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([application, environment])
+  @@index([ip])
+}
+
+model Alert {
+  id           String   @id @default(cuid())
+  level        String
+  type         String
+  message      String
+  sourceIp     String?
+  application  String
+  metadata     Json?
+  isResolved   Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([level, isResolved])
+}

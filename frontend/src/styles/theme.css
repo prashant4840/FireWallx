@@ -1,0 +1,17 @@
+:root {
+  --bg-main: #0b0f14;
+  --bg-card: #111827;
+  --bg-secondary: #1f2937;
+
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+  --color-success: #22c55e;
+  --color-info: #3b82f6;
+  --color-accent: #8b5cf6;
+
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+
+  --border-color: #283347;
+  --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
