@@ -5,6 +5,7 @@ import { createAlertIfNeeded } from "../core/alerting.js";
 import { getGeoForIp } from "../core/geoIpService.js";
 import { startRealTrafficSimulation, stopRealTrafficSimulation } from "../core/realTrafficSimulation.js";
 
+
 const ruleSchema = z.object({
   name: z.string().min(3),
   application: z.string(),

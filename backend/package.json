@@ -11,6 +11,7 @@
     "prisma:migrate": "prisma migrate dev",
     "demo:seed": "ts-node prisma/seed.ts"
   },
+  
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "cors": "^2.8.5",

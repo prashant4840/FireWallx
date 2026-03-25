@@ -22,3 +22,4 @@
 - Adaptive anomaly detection and automatic quarantine.
 - Smart alerting with deduplication to prevent alert fatigue.
 - Multi-application and multi-environment isolation.
+
